@@ -1,0 +1,18 @@
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Update interval in seconds
+update_interval 6
+
+# Minimum size of text area
+minimum_size 800 600 
+
+# stuff after 'TEXT' will be formatted on screen
+
+lua_load ~/dev/conkyrc/graphs.lua
+lua_draw_hook_pre draw_graph
+TEXT
+hello conky

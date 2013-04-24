@@ -1,13 +1,30 @@
 require 'base'
+require 'os'
+MST_ONLY = Clock:new('MST', nil, CLOCK_FONT, 'Arizona')
+MST_ONLY.condition(function() os.date("*t", os.time()).isdst end)
+
+CLOCKS = {
+	Clock:new('EST5EDT', nil, BIG_CLOCK_FONT, 'DC'),
+    Clock:new('JST', nil, CLOCK_FONT, 'Tokyo'),
+	Clock:new('GMT', nil, CLOCK_FONT, 'UTC'),
+	Clock:new('CST6CDT', nil, CLOCK_FONT, 'CST6CDT'),
+	Clock:new('MST7MDT', nil, CLOCK_FONT, 'MST7MDT'),
+	MST_ONLY,
+	Clock:new('PST8PDT', nil, CLOCK_FONT, 'PST8PDT'),
+}
+
 
 wordlclock = {
 	call = function(self)
 		worldclock:all()
 	end, --call
+	colors = { '' },
 	all = function(self)
 		--itterate over list
+		for clock in clocks do
+			print('}')
 	end, --all
-	clocks = {},
+	clocks = CLOCKS,
 }
 Clock = {
 	tz = 'UTC',
